@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>ATELIER — Moda Autoral & Curadoria de Estilo Premium</title>
+  <meta name="description" content="Descubra peças autorais em tecidos nobres. Blazers em linho italiano, camisas de seda natural e alfaiataria premium. Moda consciente com design atemporal.">
+  <meta name="keywords" content="moda autoral, curadoria de estilo, tecidos nobres, linho premium, camisa de seda, alfaiataria premium, slow fashion, design minimalista">
+  
+  <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans-serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Tailwind Custom Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            // Paleta de Cores Customizável (Modifique os Hex Codes aqui para mudar todo o tema)
+            obsidian: {
+              DEFAULT: '#0C0C0E', // Cor principal de fundo (Dark mode sofisticado)
+              light: '#16161A',    // Fundo secundário / Cards
+              accent: '#232329'    // Bordas e destaques sutis
+            },
+            champagne: {
+              DEFAULT: '#F4F0EB', // Fundo claro para contrastes pontuais / Textos principais
+              muted: '#A8A29E',    // Textos de apoio / Legendas
+            },
+            accentgold: {
+              DEFAULT: '#C5A880', // Ouro antigo - botões secundários, links e detalhes
+              light: '#E2D4C1',   // Dourado suave para hover
+              dark: '#9F8058'     // Dourado profundo
+            },
+            emeraldsuccess: {
+              DEFAULT: '#103F27', // Verde escuro de alta conversão para CTAs de compra/WhatsApp
+              light: '#1B5E3C',   // Verde hover
+              dark: '#082516'     // Fundo do botão do WhatsApp
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          boxShadow: {
+            'gold-glow': '0 0 20px rgba(197, 168, 128, 0.15)',
+            'green-glow': '0 4px 20px rgba(16, 63, 39, 0.4)',
+            'glass-panel': 'inset 0 1px 1px rgba(255, 255, 255, 0.05), 0 8px 32px rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilos Customizados & Reset Adicional */
+    body {
+      background-color: #0C0C0E;
+      color: #F4F0EB;
+    }
+    /* Estilização para o acordeão nativo <details> */
+    details[open] summary svg {
+      transform: rotate(180deg);
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0C0C0E;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #232329;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #C5A880;
+    }
+    /* Efeito de fade-in sutil para modais */
+    .modal-active {
+      animation: fadeIn 0.3s ease-out forwards;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body class="font-sans antialiased text-champagne selection:bg-accentgold selection:text-obsidian overflow-x-hidden">
+
+  <!-- ==========================================
+       BARRA DE PROMOÇÃO & CRONÔMETRO
+       ========================================== -->
+  <div id="promo-bar" class="fixed top-0 left-0 w-full h-10 bg-accentgold text-obsidian flex items-center justify-center text-xs font-semibold uppercase tracking-wider z-50 px-4">
+    <div class="flex items-center space-x-2">
+      <span>Frete Grátis nas compras acima de R$199. Oferta expira em:</span>
+      <span id="countdown" class="font-mono bg-obsidian text-accentgold px-2 py-0.5 rounded text-xs">15:00</span>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       HEADER & NAVEGAÇÃO
+       ========================================== -->
+  <header id="main-header" class="fixed top-10 left-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
+      <!-- Brand Logo (Serif) -->
+      <a href="#" class="font-serif text-2xl font-bold tracking-[0.2em] hover:text-accentgold transition-colors duration-300">
+        A M O S T R A
+      </a>
+      
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center space-x-8 text-sm font-medium tracking-wider">
+        <a href="#hero" class="hover:text-accentgold transition-colors duration-200">Início</a>
+        <a href="#vitrine" class="hover:text-accentgold transition-colors duration-200">Coleção</a>
+        <a href="#simulador" class="hover:text-accentgold transition-colors duration-200">Simulador</a>
+        <a href="#sobre" class="hover:text-accentgold transition-colors duration-200">O Conceito</a>
+        <a href="#piramide" class="hover:text-accentgold transition-colors duration-200">Guia de Estilo</a>
+        <a href="#depoimentos" class="hover:text-accentgold transition-colors duration-200">Clientes</a>
+        <a href="#contato" class="hover:text-accentgold transition-colors duration-200">Contato</a>
+        <a href="#faq" class="hover:text-accentgold transition-colors duration-200">Dúvidas</a>
+      </nav>
+      
+      <!-- CTA & Cart Icons -->
+      <div class="flex items-center space-x-4">
+        <!-- Botão Quiz -->
+        <button onclick="openQuiz()" class="hidden sm:inline-flex items-center px-4 py-2 border border-accentgold text-accentgold hover:bg-accentgold hover:text-obsidian text-xs font-semibold uppercase tracking-widest transition-all duration-300">
+          Encontrar Look Ideal
+        </button>
+
+        <!-- Botão Carrinho -->
+        <button onclick="toggleCart(true)" class="relative p-2.5 bg-obsidian-light border border-obsidian-accent hover:border-accentgold text-champagne hover:text-accentgold transition-colors duration-200" aria-label="Abrir sacola de compras">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <!-- Badge de Contagem do Carrinho -->
+          <span id="cart-badge" class="absolute -top-1.5 -right-1.5 bg-accentgold text-obsidian font-sans font-bold text-[10px] w-5 h-5 rounded-full flex items-center justify-center border border-obsidian hidden">0</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="lg:hidden p-2 text-champagne focus:outline-none" aria-label="Abrir Menu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden absolute top-20 left-0 w-full bg-obsidian border-b border-obsidian-accent px-6 py-8 flex flex-col space-y-6 text-center text-lg font-medium tracking-wide shadow-xl transition-all duration-300">
+      <a href="#hero" class="hover:text-accentgold transition-colors duration-200 py-2">Início</a>
+      <a href="#vitrine" class="hover:text-accentgold transition-colors duration-200 py-2">Coleção</a>
+      <a href="#simulador" class="hover:text-accentgold transition-colors duration-200 py-2">Simulador</a>
+      <a href="#sobre" class="hover:text-accentgold transition-colors duration-200 py-2">O Conceito</a>
+      <a href="#piramide" class="hover:text-accentgold transition-colors duration-200 py-2">Guia de Estilo</a>
+      <a href="#depoimentos" class="hover:text-accentgold transition-colors duration-200 py-2">Clientes</a>
+      <a href="#contato" class="hover:text-accentgold transition-colors duration-200 py-2">Contato</a>
+      <a href="#faq" class="hover:text-accentgold transition-colors duration-200 py-2">Dúvidas</a>
+      <button onclick="openQuiz(); document.getElementById('mobile-menu').classList.add('hidden');" class="px-6 py-3 border border-accentgold text-accentgold hover:bg-accentgold hover:text-obsidian text-sm font-semibold uppercase tracking-widest transition-all duration-300">
+        Encontrar Look Ideal
+      </button>
+    </div>
+  </header>
+
+  <main>
+    
+    <!-- ==========================================
+         HERO SECTION
+         ========================================== -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center pt-32 pb-12 overflow-hidden">
+      <!-- Background sutil com overlay -->
+      <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-obsidian/40 via-obsidian to-obsidian z-10"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,168,128,0.07)_0%,transparent_70%)]"></div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+        
+        <!-- Conteúdo Textual (Hero) -->
+        <div class="lg:col-span-7 flex flex-col items-start space-y-6 text-left">
+          <div class="inline-flex items-center space-x-2 border border-accentgold/30 px-3 py-1 rounded-full bg-accentgold/5">
+            <span class="w-1.5 h-1.5 rounded-full bg-accentgold animate-pulse"></span>
+            <span class="text-xs uppercase tracking-widest text-accentgold font-medium">Peças de Estilo Autoral</span>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal leading-[1.15] text-champagne tracking-tight">
+            Descubra sua próxima <br>
+            <span class="italic text-accentgold">identidade de estilo</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-champagne-muted max-w-xl font-light leading-relaxed">
+            Vista peças atemporais desenvolvidas em tecidos nobres como linho italiano, seda pura e lã fria. Design minimalista direto da nossa confecção para o seu guarda-roupa.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto pt-2">
+            <!-- CTA Principal (Ver Amostras) -->
+            <a href="#vitrine" class="px-8 py-4 bg-accentgold hover:bg-accentgold-light text-obsidian font-semibold text-center uppercase tracking-widest text-xs transition-all duration-300 shadow-gold-glow flex items-center justify-center space-x-2">
+              <span>Explorar Coleção</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+            <!-- CTA Secundário (Quiz) -->
+            <button onclick="openQuiz()" class="px-8 py-4 border border-champagne/20 hover:border-accentgold text-champagne hover:text-accentgold text-center font-semibold uppercase tracking-widest text-xs transition-all duration-300 flex items-center justify-center">
+              <span>Encontrar Look Ideal</span>
+            </button>
+          </div>
+
+          <!-- Badges de Confiança -->
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-obsidian-accent w-full max-w-md">
+            <div>
+              <p class="font-serif text-2xl text-accentgold">100%</p>
+              <p class="text-xs text-champagne-muted uppercase tracking-wider mt-1">Tecido Nobre</p>
+            </div>
+            <div>
+              <p class="font-serif text-2xl text-accentgold">10ml</p>
+              <p class="text-xs text-champagne-muted uppercase tracking-wider mt-1">Rendimento Farto</p>
+            </div>
+            <div>
+              <p class="font-serif text-2xl text-accentgold">Grátis</p>
+              <p class="text-xs text-champagne-muted uppercase tracking-wider mt-1">Acima de R$199</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Placeholder Visual da Imagem Principal -->
+        <div class="lg:col-span-5 relative w-full aspect-square max-w-md mx-auto lg:max-w-none">
+          <!-- Moldura Luxuosa -->
+          <div class="absolute -inset-4 border border-accentgold/10 pointer-events-none"></div>
+          <div class="absolute inset-0 bg-obsidian-light border border-obsidian-accent flex flex-col items-center justify-center p-8 overflow-hidden group shadow-2xl">
+            
+            <!-- Imagem Real -->
+            <img src="images/fashion_hero.png" alt="ATELIER Hero - Blazer de Linho Premium" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 pointer-events-none">
+            
+            <!-- Overlay com Tag Decorativa -->
+            <div class="absolute bottom-4 left-4 right-4 bg-obsidian/90 backdrop-blur-sm p-4 border border-accentgold/20 flex justify-between items-center z-20">
+              <div>
+                <p class="text-[10px] uppercase tracking-widest text-accentgold font-semibold">Destaque da Semana</p>
+                <p class="font-serif text-sm italic">Eau de Parfum Intense</p>
+              </div>
+              <span class="text-xs font-semibold px-2 py-1 bg-accentgold/15 text-accentgold">Edição Especial</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SIMULADOR DE ECONOMIA (CALCULADORA INTERATIVA)
+         ========================================== -->
+    <section id="simulador" class="py-24 bg-obsidian border-t border-obsidian-accent relative overflow-hidden">
+      <!-- Fundo Decorativo -->
+      <div class="absolute top-0 left-0 w-80 h-80 bg-accentgold/5 rounded-full blur-[80px] pointer-events-none"></div>
+      
+      <div class="max-w-5xl mx-auto px-6 relative z-10">
+        
+        <!-- Cabeçalho -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <p class="text-xs uppercase tracking-widest text-accentgold font-semibold">Simulador de Economia</p>
+          <h2 class="font-serif text-3xl sm:text-4xl font-normal text-champagne">Calcule Sua Economia com Moda</h2>
+          <div class="w-12 h-[1px] bg-accentgold mx-auto my-3"></div>
+          <p class="text-sm text-champagne-muted font-light">
+            Compare o custo de adquirir roupas de grifes de shopping versus comprar as mesmas peças de alta alfaiataria direto do ATELIER.
+          </p>
+        </div>
+
+        <!-- Calculadora de Sliders -->
+        <div class="bg-obsidian-light border border-obsidian-accent p-8 rounded-none md:p-12 shadow-glass-panel grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          
+          <!-- Lado do Controle Slider -->
+          <div class="space-y-6">
+            <h3 class="font-serif text-xl text-champagne">Quantas peças de alta alfaiataria você gostaria de adquirir para o seu closet?</h3>
+            <p class="text-xs text-champagne-muted font-light leading-relaxed">
+              Mova o seletor abaixo para estimar quantas peças de alfaiataria deseja adicionar ao seu guarda-roupa.
+            </p>
+            
+            <div class="space-y-4 pt-4">
+              <div class="flex justify-between items-center">
+                <span class="text-sm font-semibold text-accentgold">Quantidade de Peças:</span>
+                <span id="slider-val" class="font-serif text-2xl font-bold text-champagne bg-obsidian-accent px-4 py-1 border border-accentgold/20">3</span>
+              </div>
+              <input id="item-slider" type="range" min="1" max="10" value="3" class="w-full h-1 bg-obsidian-accent accent-accentgold rounded-lg appearance-none cursor-pointer">
+              <div class="flex justify-between text-[10px] text-champagne-muted uppercase tracking-wider">
+                <span>1 Peça</span>
+                <span>10 Peças</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Lado da Exibição Financeira -->
+          <div class="space-y-6 border-t md:border-t-0 md:border-l border-obsidian-accent pt-8 md:pt-0 md:pl-12 flex flex-col justify-center">
+            
+            <!-- Custo em Frascos Grandes -->
+            <div>
+              <p class="text-xs text-champagne-muted uppercase tracking-widest">Custo Estimado em Frascos Grandes (75ml+)</p>
+              <p id="cost-bottles" class="font-serif text-2xl text-red-500 font-semibold mt-1">R$ 7.500,00</p>
+              <p class="text-[10px] text-champagne-muted mt-0.5">*Considerando valor médio de R$800 por peça em grifes de shopping.</p>
+            </div>
+
+            <!-- Custo em Amostras -->
+            <div>
+              <p class="text-xs text-champagne-muted uppercase tracking-widest">Custo Equivalente em Amostras (10ml)</p>
+              <p id="cost-samples" class="font-serif text-2xl text-emeraldsuccess-light font-semibold mt-1">R$ 539,70</p>
+              <p class="text-[10px] text-champagne-muted mt-0.5">*Considerando valor médio de R$179 por amostra.</p>
+            </div>
+
+            <!-- Total Economizado -->
+            <div class="pt-4 border-t border-obsidian-accent">
+              <p class="text-xs text-accentgold uppercase tracking-widest font-semibold">Sua Economia Real Estimada</p>
+              <p id="cost-saved" class="font-serif text-4xl text-accentgold font-bold mt-1">R$ 6.960,30</p>
+              <p class="text-xs text-champagne-muted font-light mt-1">Compre variedade, crie personalidade, compre inteligente.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VITRINE DE PRODUTOS
+         ========================================== -->
+    <section id="vitrine" class="py-24 bg-obsidian-light border-y border-obsidian-accent">
+      <div class="max-w-7xl mx-auto px-6">
+        
+        <!-- Cabeçalho da Seção -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <p class="text-xs uppercase tracking-widest text-accentgold font-semibold">Nossa Curadoria Exclusiva</p>
+          <h2 class="font-serif text-3xl sm:text-4xl font-normal text-champagne">As Mais Desejadas da Pele</h2>
+          <div class="w-12 h-[1px] bg-accentgold mx-auto my-4"></div>
+          <p class="text-sm text-champagne-muted font-light leading-relaxed">
+            Selecione as amostras fracionadas individualmente de frascos originais e lacrados. O primeiro passo ideal para sua assinatura de luxo.
+          </p>
+        </div>
+
+        <!-- Grid de Produtos -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+
+          <!-- CARD PRODUTO 1 -->
+          <article class="bg-obsidian border border-obsidian-accent group hover:border-accentgold/30 transition-all duration-300 flex flex-col justify-between h-full shadow-lg">
+            <div>
+              <!-- Área da Imagem -->
+              <div class="relative w-full aspect-[4/5] bg-obsidian-accent overflow-hidden">
+                <img src="images/fashion_p1.png" alt="Blazer Oversized Linho" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none" onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#0F0F0F] flex flex-col items-center justify-center p-6\'><span class=\'text-accentgold text-5xl mb-4\'>👔</span><span class=\'font-serif text-champagne text-base font-medium\'>Blazer Oversized</span><span class=\'text-[9px] text-accentgold uppercase tracking-widest mt-2\'>Linho Italiano</span></div>';">
+
+                <!-- Tag de Categoria -->
+                <span class="absolute top-4 left-4 bg-obsidian/85 backdrop-blur-sm text-[10px] uppercase tracking-widest text-accentgold px-2.5 py-1 font-semibold border border-accentgold/25">
+                  Linho Premium
+                </span>
+              </div>
+
+              <!-- Detalhes do Produto -->
+              <div class="p-6 space-y-3">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h3 class="font-serif text-lg text-champagne group-hover:text-accentgold transition-colors duration-200">Blazer Oversized Linho</h3>
+                    <p class="text-xs text-champagne-muted mt-0.5">Corte Italiano</p>
+                  </div>
+                  <span class="text-xs text-accentgold font-medium">Autoral</span>
+                </div>
+
+                <p class="text-xs text-champagne-muted font-light leading-relaxed line-clamp-2">
+                  Blazer oversized em linho premium italiano, corte reto descontraído com forro acetinado. Peça versátil para looks formais e casuais.
+                </p>
+
+                <!-- Comparação de Preços Inteligente -->
+                <div class="bg-obsidian-light p-3 space-y-1.5 border border-obsidian-accent">
+                  <div class="flex justify-between text-[11px] text-champagne-muted">
+                    <span>Grife de Shopping</span>
+                    <span class="line-through">R$ 800,00</span>
+                  </div>
+                  <div class="flex justify-between text-xs font-semibold text-champagne">
+                    <span>Peça ATELIER (Direto)</span>
+                    <span class="text-accentgold">R$ 289,90</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Compra -->
+            <div class="px-6 pb-6 pt-2 grid grid-cols-2 gap-2">
+              <button onclick="addToCart(1, 'Blazer Oversized Linho', 289.90, 'images/fashion_p1.png')" class="py-3 border border-accentgold/40 text-accentgold hover:bg-accentgold hover:text-obsidian text-center font-semibold uppercase tracking-widest text-[10px] transition-all duration-300">
+                + Adicionar
+              </button>
+              <a href="https://wa.me/5516997795333?text=Ol%C3%A1%21+Gostaria+de+pedir+o+Blazer+Oversized+Linho" target="_blank" rel="noopener noreferrer" class="py-3 bg-emeraldsuccess hover:bg-emeraldsuccess-light text-champagne text-center font-semibold uppercase tracking-widest text-[10px] transition-all duration-300 flex items-center justify-center space-x-1">
+                <span>Comprar</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- CARD PRODUTO 2 -->
+          <article class="bg-obsidian border border-obsidian-accent group hover:border-accentgold/30 transition-all duration-300 flex flex-col justify-between h-full shadow-lg">
+            <div>
+              <!-- Área da Imagem -->
+              <div class="relative w-full aspect-[4/5] bg-obsidian-accent overflow-hidden">
+                <img src="images/fashion_p2.png" alt="Camisa Seda Natural" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none" onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#0F0F0F] flex flex-col items-center justify-center p-6\'><span class=\'text-accentgold text-5xl mb-4\'>🧣</span><span class=\'font-serif text-champagne text-base font-medium\'>Camisa Seda Natural</span><span class=\'text-[9px] text-accentgold uppercase tracking-widest mt-2\'>Seda Premium</span></div>';">
+
+                <!-- Tag de Categoria -->
+                <span class="absolute top-4 left-4 bg-obsidian/85 backdrop-blur-sm text-[10px] uppercase tracking-widest text-accentgold px-2.5 py-1 font-semibold border border-accentgold/25">
+                  Seda Natural
+                </span>
+              </div>
+
+              <!-- Detalhes do Produto -->
+              <div class="p-6 space-y-3">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h3 class="font-serif text-lg text-champagne group-hover:text-accentgold transition-colors duration-200">Camisa Seda Natural</h3>
+                    <p class="text-xs text-champagne-muted mt-0.5">Caimento Fluido</p>
+                  </div>
+                  <span class="text-xs text-accentgold font-medium">Nobre</span>
+                </div>
+
+                <p class="text-xs text-champagne-muted font-light leading-relaxed line-clamp-2">
+                  Camisa em seda natural com caimento fluido perfeito, colarinho italiano e botões de madrepérola. Elegância atemporal.
+                </p>
+
+                <!-- Comparação de Preços Inteligente -->
+                <div class="bg-obsidian-light p-3 space-y-1.5 border border-obsidian-accent">
+                  <div class="flex justify-between text-[11px] text-champagne-muted">
+                    <span>Grife de Shopping</span>
+                    <span class="line-through">R$ 600,00</span>
+                  </div>
+                  <div class="flex justify-between text-xs font-semibold text-champagne">
+                    <span>Peça ATELIER (Direto)</span>
+                    <span class="text-accentgold">R$ 199,90</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Compra -->
+            <div class="px-6 pb-6 pt-2 grid grid-cols-2 gap-2">
+              <button onclick="addToCart(2, 'Camisa Seda Natural', 199.90, 'images/fashion_p2.png')" class="py-3 border border-accentgold/40 text-accentgold hover:bg-accentgold hover:text-obsidian text-center font-semibold uppercase tracking-widest text-[10px] transition-all duration-300">
+                + Adicionar
+              </button>
+              <a href="https://wa.me/5516997795333?text=Ol%C3%A1%21+Gostaria+de+pedir+a+Camisa+Seda+Natural" target="_blank" rel="noopener noreferrer" class="py-3 bg-emeraldsuccess hover:bg-emeraldsuccess-light text-champagne text-center font-semibold uppercase tracking-widest text-[10px] transition-all duration-300 flex items-center justify-center space-x-1">
+                <span>Comprar</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- CARD PRODUTO 3 -->
+          <article class="bg-obsidian border border-obsidian-accent group hover:border-accentgold/30 transition-all duration-300 flex flex-col justify-between h-full shadow-lg">
+            <div>
+              <!-- Área da Imagem -->
+              <div class="relative w-full aspect-[4/5] bg-obsidian-accent overflow-hidden">
+                <img src="images/fashion_p3.png" alt="Calça Alfaiataria Wide" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none" onerror="this.style.display='none'; this.parentElement.innerHTML += '<div class=\'absolute inset-0 bg-gradient-to-br from-[#2D2D2D] to-[#0F0F0F] flex flex-col items-center justify-center p-6\'><span class=\'text-accentgold text-5xl mb-4\'>👖</span><span class=\'font-serif text-champagne text-base font-medium\'>Calça Alfaiataria</span><span class=\'text-[9px] text-accentgold uppercase tracking-widest mt-2\'>Alfaiataria Premium</span></div>';">
+
+                <!-- Tag de Categoria -->
+                <span class="absolute top-4 left-4 bg-obsidian/85 backdrop-blur-sm text-[10px] uppercase tracking-widest text-accentgold px-2.5 py-1 font-semibold border border-accentgold/25">
+                  Alfaiataria
+                </span>
+              </div>
+
+              <!-- Detalhes do Produto -->
+              <div class="p-6 space-y-3">
+                <div class="flex justify-between items-start">
+                  <div>
+                    <h3 class="font-serif text-lg text-champagne group-hover:text-accentgold transition-colors duration-200">Calça Alfaiataria Wide</h3>
+                    <p class="text-xs text-champagne-muted mt-0.5">Modelagem Fluida</p>
+                  </div>
+                  <span class="text-xs text-accentgold font-medium">Elegante</span>
+                </div>
+
+                <p class="text-xs text-champagne-muted font-light leading-relaxed line-clamp-2">
+                  Calça wide leg em tecido de alfaiataria com elastano, cintura alta estruturada e vincos marcados. Conforto premium.
+                </p>
+
+                <!-- Comparação de Preços Inteligente -->
+                <div class="bg-obsidian-light p-3 space-y-1.5 border border-obsidian-accent">
+                  <div class="flex justify-between text-[11px] text-champagne-muted">
+                    <span>Grife de Shopping</span>
+                    <span class="line-through">R$ 700,00</span>
+                  </div>
+                  <div class="flex justify-between text-xs font-semibold text-champagne">
+                    <span>Peça ATELIER (Direto)</span>
+                    <span class="text-accentgold">R$ 249,90</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- CTA Compra -->
+            <div class="px-6 pb-6 pt-2 grid grid-cols-2 gap-2">
+              <button onclick="addToCart(3, 'Calça Alfaiataria Wide', 249.90, 'images/fashion_p3.png')" class="py-3 border border-accentgold/40 text-accentgold hover:bg-accentgold hover:text-obsidian text-center font-semibold uppercase tracking-widest text-[10px] transition-all duration-300">
+                + Adicionar
+              </button>
+              <a href="https://wa.me/5516997795333?text=Ol%C3%A1%21+Gostaria+de+pedir+a+Calca+Alfaiataria+Wide" target="_blank" rel="noopener noreferrer" class="py-3 bg-emeraldsuccess hover:bg-emeraldsuccess-light text-champagne text-center font-semibold uppercase tracking-widest text-[10px] transition-all duration-300 flex items-center justify-center space-x-1">
+                <span>Comprar</span>
+              </a>
+            </div>
+          </article>
+
+        </div><!-- Banner Explicativo Rápido -->
+        <div class="mt-16 bg-obsidian p-8 border border-accentgold/15 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2">
+            <h4 class="font-serif text-xl text-accentgold">Procurando outro modelo ou cor sob medida?</h4>
+            <p class="text-xs text-champagne-muted max-w-xl font-light">
+              Temos uma coleção completa com diversas modelagens e cortes sob encomenda. Diga-nos qual estilo procura que preparamos para você.
+            </p>
+          </div>
+          <a href="https://wa.me/5516997795333?text=Ol%C3%A1%21+Gostaria+de+consultar+outras+pe%C3%A7as+da+cole%C3%A7%C3%A3o" target="_blank" rel="noopener noreferrer" class="px-6 py-4 bg-transparent hover:bg-accentgold text-accentgold hover:text-obsidian border border-accentgold text-xs font-semibold uppercase tracking-widest transition-all duration-300 w-full md:w-auto text-center">
+            Consultar Estilista
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         O CONCEITO (NOSSA HISTÓRIA)
+         ========================================== -->
+    <section id="sobre" class="py-24 bg-obsidian relative overflow-hidden">
+      <!-- Elemento de luz de fundo -->
+      <div class="absolute right-0 bottom-0 w-[400px] h-[400px] bg-accentgold/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        
+        <!-- Bloco de Imagem Assimétrico -->
+        <div class="lg:col-span-6 relative order-last lg:order-first">
+          <div class="absolute -top-6 -left-6 w-24 h-24 border-t-2 border-l-2 border-accentgold/30"></div>
+          <div class="absolute -bottom-6 -right-6 w-24 h-24 border-b-2 border-r-2 border-accentgold/30"></div>
+          
+          <div class="relative w-full aspect-[4/3] bg-obsidian-light overflow-hidden shadow-2xl">
+            <img src="images/fashion_history.png" alt="Frasco decantado e pipeta de alta precisão em laboratório estéril" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+          </div>
+        </div>
+
+        <!-- Conteúdo do Manifesto -->
+        <div class="lg:col-span-6 space-y-6">
+          <p class="text-xs uppercase tracking-widest text-accentgold font-semibold">A Alfaiataria Atemporal</p>
+          <h2 class="font-serif text-3xl sm:text-4xl font-normal text-champagne leading-tight">
+            Por que escolher o ATELIER?
+          </h2>
+          <div class="w-12 h-[1px] bg-accentgold my-2"></div>
+          
+          <div class="space-y-4 text-sm text-champagne-muted font-light leading-relaxed">
+            <p>
+              A escolha de uma boa roupa não deve ser um ciclo descartável de fast-fashion. Peças baratas usam fibras sintéticas que causam desconforto e desbotam rapidamente.
+            </p>
+            <p>
+              O <strong>ATELIER</strong> nasceu para mudar essa jornada. Confeccionamos artesanalmente com fibras naturais puras, acabamentos em costura inglesa e alfaiataria de alta resistência.
+            </p>
+            <p>
+              Isso permite que você vista tecidos nobres no dia a dia por um preço justo, garantindo durabilidade por gerações e caimento impecável.
+            </p>
+          </div>
+
+          <!-- Mini Lista de Diferenciais -->
+          <ul class="space-y-3 pt-4 border-t border-obsidian-accent text-xs">
+            <li class="flex items-center space-x-3 text-champagne">
+              <span class="w-1.5 h-1.5 rounded-full bg-accentgold"></span>
+              <span><strong>Higiene Absoluta:</strong> Processo em ambiente pressurizado livre de impurezas.</span>
+            </li>
+            <li class="flex items-center space-x-3 text-champagne">
+              <span class="w-1.5 h-1.5 rounded-full bg-accentgold"></span>
+              <span><strong>Vidro Premium:</strong> Embalagens que preservam a integridade das notas voláteis.</span>
+            </li>
+            <li class="flex items-center space-x-3 text-champagne">
+              <span class="w-1.5 h-1.5 rounded-full bg-accentgold"></span>
+              <span><strong>Fácil Transporte:</strong> Leve na bolsa de mão, viagens ou closet do escritório.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         GUIA DE ESTILO INTERATIVO
+         ========================================== -->
+    <section id="piramide" class="py-24 bg-obsidian-light border-y border-obsidian-accent">
+      <div class="max-w-4xl mx-auto px-6">
+        
+        <!-- Cabeçalho -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <p class="text-xs uppercase tracking-widest text-accentgold font-semibold">Guia de Estilo</p>
+          <h2 class="font-serif text-3xl font-normal text-champagne">A Anatomia de uma Peça</h2>
+          <div class="w-12 h-[1px] bg-accentgold mx-auto my-3"></div>
+          <p class="text-sm text-champagne-muted font-light leading-relaxed">
+            Entenda os três pilares fundamentais que definem o caimento, conforto e longevidade de uma peça de alfaiataria premium.
+          </p>
+        </div>
+
+        <!-- Estrutura Piramidal Interativa -->
+        <div class="space-y-4">
+          
+          <!-- Camada 1: Notas de Topo -->
+          <div onclick="selectPyramidLayer('topo')" id="layer-topo" class="pyramid-layer cursor-pointer border border-accentgold/35 bg-obsidian p-6 hover:bg-obsidian-accent/50 transition-all duration-300 rounded-none relative overflow-hidden group">
+            <div class="absolute left-0 top-0 h-full w-2 bg-accentgold"></div>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-[10px] text-accentgold uppercase tracking-widest font-semibold">Matéria-Prima</span>
+                <h3 class="font-serif text-lg text-champagne mt-0.5">Fibras Naturais</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accentgold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            
+            <div id="desc-topo" class="mt-4 pt-4 border-t border-obsidian-accent text-xs text-champagne-muted leading-relaxed font-light space-y-2 hidden">
+              <p>A base de tudo. Tecidos de alta qualidade garantem toque macio, respirabilidade e resiliência das cores ao longo do tempo.</p>
+              <p><strong class="text-accentgold">Ingredientes Comuns:</strong> Linho Puro Italiano, Seda Natural, Algodão Pima Peruano, Lã Fria 120s</p>
+            </div>
+          </div>
+
+          <!-- Camada 2: Notas de Coração -->
+          <div onclick="selectPyramidLayer('coracao')" id="layer-coracao" class="pyramid-layer cursor-pointer border border-obsidian-accent bg-obsidian p-6 hover:bg-obsidian-accent/50 transition-all duration-300 rounded-none relative overflow-hidden group">
+            <div class="absolute left-0 top-0 h-full w-2 bg-transparent transition-colors duration-300"></div>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-[10px] text-accentgold/80 uppercase tracking-widest font-semibold">Modelagem</span>
+                <h3 class="font-serif text-lg text-champagne mt-0.5">Caimento Impecável</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accentgold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            
+            <div id="desc-coracao" class="mt-4 pt-4 border-t border-obsidian-accent text-xs text-champagne-muted leading-relaxed font-light space-y-2 hidden">
+              <p>A modelagem autoral que valoriza a silhueta com conforto. Proporções estudadas para caimento fluido em qualquer biotipo.</p>
+              <p><strong class="text-accentgold">Ingredientes Comuns:</strong> Ombreiras Estruturadas, Pences Ajustadas, Vincos Marcados, Cintura Alta Estruturada</p>
+            </div>
+          </div>
+
+          <!-- Camada 3: Notas de Fundo -->
+          <div onclick="selectPyramidLayer('fundo')" id="layer-fundo" class="pyramid-layer cursor-pointer border border-obsidian-accent bg-obsidian p-6 hover:bg-obsidian-accent/50 transition-all duration-300 rounded-none relative overflow-hidden group">
+            <div class="absolute left-0 top-0 h-full w-2 bg-transparent transition-colors duration-300"></div>
+            <div class="flex justify-between items-center">
+              <div>
+                <span class="text-[10px] text-accentgold/80 uppercase tracking-widest font-semibold">Acabamento</span>
+                <h3 class="font-serif text-lg text-champagne mt-0.5">Costura & Detalhes</h3>
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accentgold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+            
+            <div id="desc-fundo" class="mt-4 pt-4 border-t border-obsidian-accent text-xs text-champagne-muted leading-relaxed font-light space-y-2 hidden">
+              <p>Os pequenos detalhes que garantem que a peça dure por gerações. Acabamentos internos e botões premium selecionados.</p>
+              <p><strong class="text-accentgold">Ingredientes Comuns:</strong> Botões de Madrepérola, Costura Inglesa Interna, Bainhas Invisíveis, Linha de Alta Resistência</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CARROSSEL DE DEPOIMENTOS
+         ========================================== -->
+    <section id="depoimentos" class="py-24 bg-obsidian">
+      <div class="max-w-5xl mx-auto px-6">
+        
+        <!-- Cabeçalho -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <p class="text-xs uppercase tracking-widest text-accentgold font-semibold">Feedback De Quem Usa</p>
+          <h2 class="font-serif text-3xl font-normal text-champagne">Opinião de Nossos Clientes</h2>
+          <div class="w-12 h-[1px] bg-accentgold mx-auto my-3"></div>
+        </div>
+
+        <!-- Carrossel Wrapper -->
+        <div class="relative bg-obsidian-light border border-obsidian-accent p-8 md:p-12 shadow-glass-panel overflow-hidden">
+          
+          <!-- Slides -->
+          <div class="relative min-h-[160px]">
+            
+            <!-- Slide 1 -->
+            <div id="slide-0" class="testimonial-slide transition-opacity duration-500 space-y-4">
+              <div class="flex items-center space-x-1 text-accentgold">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="font-serif text-lg md:text-xl italic text-champagne-muted font-light leading-relaxed">
+                "Adquirir o Blazer de Linho no ATELIER foi a melhor decisão. O caimento é perfeito e o linho é de altíssima qualidade, encorpado e macio. Já usei tanto para reunião de trabalho quanto no final de semana. Recomendo muito!"
+              </p>
+              <div class="pt-4">
+                <p class="text-xs font-semibold uppercase tracking-wider text-champagne">Felipe Albuquerque</p>
+                <p class="text-[10px] text-accentgold uppercase tracking-widest mt-0.5">São Paulo - SP</p>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div id="slide-1" class="testimonial-slide transition-opacity duration-500 space-y-4 hidden opacity-0">
+              <div class="flex items-center space-x-1 text-accentgold">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="font-serif text-lg md:text-xl italic text-champagne-muted font-light leading-relaxed">
+                "Excelente experiência de compra. A camisa de seda chegou impecavelmente embalada, com instruções de lavagem e cuidado bem detalhadas. O atendimento no WhatsApp para tirar dúvidas sobre tamanhos foi nota 10."
+              </p>
+              <div class="pt-4">
+                <p class="text-xs font-semibold uppercase tracking-wider text-champagne">Mariana G. Castilho</p>
+                <p class="text-[10px] text-accentgold uppercase tracking-widest mt-0.5">Curitiba - PR</p>
+              </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div id="slide-2" class="testimonial-slide transition-opacity duration-500 space-y-4 hidden opacity-0">
+              <div class="flex items-center space-x-1 text-accentgold">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <p class="font-serif text-lg md:text-xl italic text-champagne-muted font-light leading-relaxed">
+                "Comprei a calça alfaiataria wide leg e ela vestiu como uma luva. A cintura alta realmente modela super bem e o vinco não desfaz fácil. A política de troca grátis me deu a segurança que eu precisava."
+              </p>
+              <div class="pt-4">
+                <p class="text-xs font-semibold uppercase tracking-wider text-champagne">Lucas Peixoto</p>
+                <p class="text-[10px] text-accentgold uppercase tracking-widest mt-0.5">Porto Alegre - RS</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Controles do Carrossel -->
+          <div class="flex justify-between items-center pt-8 border-t border-obsidian-accent mt-8">
+            <div class="flex space-x-2">
+              <button onclick="prevSlide()" class="p-2 border border-accentgold/35 hover:border-accentgold text-accentgold hover:bg-accentgold hover:text-obsidian transition-colors duration-200" aria-label="Depoimento Anterior">
+                ←
+              </button>
+              <button onclick="nextSlide()" class="p-2 border border-accentgold/35 hover:border-accentgold text-accentgold hover:bg-accentgold hover:text-obsidian transition-colors duration-200" aria-label="Próximo Depoimento">
+                →
+              </button>
+            </div>
+            <!-- Bullets de Navegação -->
+            <div class="flex space-x-2">
+              <span id="bullet-0" class="w-1.5 h-1.5 rounded-full bg-accentgold transition-colors duration-300"></span>
+              <span id="bullet-1" class="w-1.5 h-1.5 rounded-full bg-accentgold/30 transition-colors duration-300"></span>
+              <span id="bullet-2" class="w-1.5 h-1.5 rounded-full bg-accentgold/30 transition-colors duration-300"></span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SEÇÃO DE CONTATO (FORMULÁRIO INTEGRADO AO WHATSAPP)
+         ========================================== -->
+    <section id="contato" class="py-24 bg-obsidian border-t border-obsidian-accent relative">
+      <div class="max-w-4xl mx-auto px-6">
+        <!-- Cabeçalho -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <p class="text-xs uppercase tracking-widest text-accentgold font-semibold">Contato Direto</p>
+          <h2 class="font-serif text-3xl font-normal text-champagne">Fale Conosco</h2>
+          <div class="w-12 h-[1px] bg-accentgold mx-auto my-3"></div>
+          <p class="text-sm text-champagne-muted font-light leading-relaxed">
+            Dúvidas sobre roupas, modelagens, tamanhos ou tecidos específicos? Preencha os campos abaixo para iniciar seu contato direto via WhatsApp.
+          </p>
+        </div>
+
+        <!-- Formulário de Contato -->
+        <form id="contact-form" onsubmit="submitContactForm(event)" class="bg-obsidian-light border border-obsidian-accent p-8 md:p-10 shadow-glass-panel space-y-6 max-w-2xl mx-auto">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="contact-name" class="text-xs uppercase tracking-widest text-accentgold font-semibold">Seu Nome</label>
+              <input type="text" id="contact-name" required class="w-full bg-obsidian border border-obsidian-accent focus:border-accentgold text-champagne text-sm px-4 py-3 outline-none transition-colors duration-200" placeholder="Ex: Felipe Albuquerque">
+            </div>
+            <div class="space-y-2">
+              <label for="contact-email" class="text-xs uppercase tracking-widest text-accentgold font-semibold">Seu E-mail</label>
+              <input type="email" id="contact-email" required class="w-full bg-obsidian border border-obsidian-accent focus:border-accentgold text-champagne text-sm px-4 py-3 outline-none transition-colors duration-200" placeholder="Ex: felipe@email.com">
+            </div>
+          </div>
+          <div class="space-y-2">
+            <label for="contact-message" class="text-xs uppercase tracking-widest text-accentgold font-semibold">Sua Mensagem / Dúvida</label>
+            <textarea id="contact-message" rows="4" required class="w-full bg-obsidian border border-obsidian-accent focus:border-accentgold text-champagne text-sm px-4 py-3 outline-none transition-colors duration-200 resize-none" placeholder="Digite sua mensagem detalhada aqui..."></textarea>
+          </div>
+          
+          <div class="pt-2">
+            <button type="submit" class="w-full py-4 bg-accentgold hover:bg-accentgold-light text-obsidian font-semibold uppercase tracking-widest text-xs transition-all duration-300 flex items-center justify-center space-x-2">
+              <span>Enviar Mensagem no WhatsApp</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="text-center text-[10px] text-champagne-muted font-light">
+            Ou se preferir, envie diretamente para o e-mail <a href="mailto:contato@ateliermoda.com" class="text-accentgold hover:underline">contato@ateliermoda.com</a>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         INFORMAÇÕES & FAQ (ACORDEÃO NATIVO)
+         ========================================== -->
+    <section id="faq" class="py-24 bg-obsidian-light border-t border-obsidian-accent">
+      <div class="max-w-4xl mx-auto px-6">
+        
+        <!-- Cabeçalho -->
+        <div class="text-center max-w-2xl mx-auto mb-16 space-y-4">
+          <p class="text-xs uppercase tracking-widest text-accentgold font-semibold">Tire Suas Dúvidas</p>
+          <h2 class="font-serif text-3xl font-normal text-champagne">Perguntas Frequentes</h2>
+          <div class="w-12 h-[1px] bg-accentgold mx-auto my-3"></div>
+        </div>
+
+        <!-- Acordeões Utilizando <details> & <summary> -->
+        <div class="space-y-4">
+
+          <!-- FAQ Item 1 -->
+          <details class="group bg-obsidian border border-obsidian-accent transition-all duration-300 overflow-hidden">
+            <summary class="flex justify-between items-center p-6 text-sm font-medium tracking-wide text-champagne cursor-pointer select-none focus:outline-none list-none [&::-webkit-details-marker]:hidden">
+              <span>Como posso escolher o tamanho correto da minha peça?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accentgold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-xs text-champagne-muted font-light leading-relaxed border-t border-obsidian-accent/30 pt-4">
+              Disponibilizamos uma tabela de medidas detalhada em cada produto e um provador virtual. Além disso, nossa equipe de alfaiates está disponível no WhatsApp para fazer uma consultoria de caimento personalizada baseada no seu biotipo.
+            </div>
+          </details>
+
+          <!-- FAQ Item 2 -->
+          <details class="group bg-obsidian border border-obsidian-accent transition-all duration-300 overflow-hidden">
+            <summary class="flex justify-between items-center p-6 text-sm font-medium tracking-wide text-champagne cursor-pointer select-none focus:outline-none list-none [&::-webkit-details-marker]:hidden">
+              <span>Quais são as diretrizes de lavagem e cuidados com tecidos nobres?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accentgold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-xs text-champagne-muted font-light leading-relaxed border-t border-obsidian-accent/30 pt-4">
+              Como trabalhamos com linho, seda e tecidos naturais premium, recomendamos lavagem à mão ou em ciclo delicado com sabão neutro. Evite secadoras. Cada peça acompanha um manual de cuidados para estender a vida útil do produto.
+            </div>
+          </details>
+
+          <!-- FAQ Item 3 -->
+          <details class="group bg-obsidian border border-obsidian-accent transition-all duration-300 overflow-hidden">
+            <summary class="flex justify-between items-center p-6 text-sm font-medium tracking-wide text-champagne cursor-pointer select-none focus:outline-none list-none [&::-webkit-details-marker]:hidden">
+              <span>Como funciona a política de troca ou devolução?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accentgold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-xs text-champagne-muted font-light leading-relaxed border-t border-obsidian-accent/30 pt-4">
+              Oferecemos a primeira troca 100% gratuita em até 30 dias após o recebimento do produto. O processo é simples e rápido: basta solicitar pelo WhatsApp ou e-mail que geramos o código de postagem sem custo.
+            </div>
+          </details>
+
+          <!-- FAQ Item 4 -->
+          <details class="group bg-obsidian border border-obsidian-accent transition-all duration-300 overflow-hidden">
+            <summary class="flex justify-between items-center p-6 text-sm font-medium tracking-wide text-champagne cursor-pointer select-none focus:outline-none list-none [&::-webkit-details-marker]:hidden">
+              <span>Quais são os prazos de entrega e regiões atendidas?</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-accentgold transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </summary>
+            <div class="px-6 pb-6 text-xs text-champagne-muted font-light leading-relaxed border-t border-obsidian-accent/30 pt-4">
+              Enviamos para todo o Brasil via Sedex ou transportadora. O prazo varia de 2 a 7 dias úteis. Oferecemos Frete Grátis nas compras acima de R$ 299. Para a cidade de São Paulo, oferecemos entrega expressa no mesmo dia.
+            </div>
+          </details>
+
+        </div>
+
+        <!-- Seção de Apoio Rápido / Horários -->
+        <div class="mt-12 p-6 border border-obsidian-accent bg-obsidian grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+          <div class="space-y-1">
+            <p class="text-xs uppercase tracking-widest text-accentgold font-semibold">Atendimento e Envios</p>
+            <p class="text-xs text-champagne-muted font-light">Segunda a Sexta-feira: 09:00 às 18:00</p>
+            <p class="text-xs text-champagne-muted font-light">Sábados: 09:00 às 13:00</p>
+          </div>
+          <div class="text-left md:text-right">
+            <p class="text-xs text-champagne-muted font-light">Dúvida específica ou pedido sob demanda?</p>
+            <a href="https://wa.me/5516997795333?text=Ol%C3%A1%21+Tenho+uma+d%C3%BAvida+sobre+as+roupas" target="_blank" rel="noopener noreferrer" class="text-xs text-accentgold hover:text-accentgold-light underline font-medium mt-1 inline-block">
+              Falar com estilista no WhatsApp
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       FOOTER (RODAPÉ)
+       ========================================== -->
+  <footer class="bg-obsidian border-t border-obsidian-accent text-champagne-muted text-xs py-16">
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
+      
+      <!-- Bloco Institucional -->
+      <div class="space-y-4">
+        <h3 class="font-serif text-lg font-bold tracking-[0.2em] text-champagne">ATELIER</h3>
+        <p class="font-light leading-relaxed max-w-[240px]">
+          Moda autoral e curadoria de estilo. Tecidos nobres, modelagem impecável e processos sustentáveis.
+        </p>
+      </div>
+
+      <!-- Links de Navegação -->
+      <div class="space-y-4">
+        <h4 class="font-serif text-sm text-champagne tracking-wider uppercase font-semibold">Navegação</h4>
+        <ul class="space-y-2.5 font-light">
+          <li><a href="#hero" class="hover:text-accentgold transition-colors duration-200">Início</a></li>
+          <li><a href="#vitrine" class="hover:text-accentgold transition-colors duration-200">Coleção</a></li>
+          <li><a href="#sobre" class="hover:text-accentgold transition-colors duration-200">O Conceito</a></li>
+          <li><a href="#faq" class="hover:text-accentgold transition-colors duration-200">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Informações Legais / Contatos -->
+      <div class="space-y-4">
+        <h4 class="font-serif text-sm text-champagne tracking-wider uppercase font-semibold">Contatos</h4>
+        <ul class="space-y-2.5 font-light">
+          <li>E-mail: contato@ateliermoda.com</li>
+          <li>WhatsApp: +55 (16) 99779-5333</li>
+          <li>Rua Oscar Freire, 1500 - São Paulo, SP</li>
+        </ul>
+      </div>
+
+      <!-- Selos de Segurança / Redes Sociais -->
+      <div class="space-y-4">
+        <h4 class="font-serif text-sm text-champagne tracking-wider uppercase font-semibold">Siga-nos</h4>
+        
+        <!-- Redes Sociais -->
+        <div class="flex space-x-4">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="p-2 border border-obsidian-accent hover:border-accentgold text-champagne hover:text-accentgold transition-colors duration-200" aria-label="Acesse nosso Instagram">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="p-2 border border-obsidian-accent hover:border-accentgold text-champagne hover:text-accentgold transition-colors duration-200" aria-label="Acesse nosso Facebook">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Selo de Pagamento Seguro -->
+        <div class="pt-2">
+          <p class="text-[10px] text-champagne-muted uppercase tracking-widest mb-1.5">Compra 100% Protegida</p>
+          <div class="flex flex-wrap gap-2 text-[10px] text-champagne opacity-75">
+            <span class="px-1.5 py-0.5 border border-obsidian-accent bg-obsidian font-mono">PIX</span>
+            <span class="px-1.5 py-0.5 border border-obsidian-accent bg-obsidian font-mono">CARTÃO</span>
+            <span class="px-1.5 py-0.5 border border-obsidian-accent bg-obsidian font-mono">SSL</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Direitos Autorais -->
+    <div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-obsidian-accent flex flex-col md:flex-row items-center justify-between text-[11px] text-champagne-muted font-light gap-4">
+      <p>© 2026 ATELIER Moda Autoral. Todos os direitos reservados. CNPJ: 00.000.000/0001-00.</p>
+      <p class="flex items-center space-x-1">
+        <span>Desenvolvido com sofisticação.</span>
+      </p>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       WHATSAPP CONTATO FLUTUANTE
+       ========================================== -->
+  <a href="https://wa.me/5516997795333?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+as+roupas+do+ATELIER" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 right-6 z-40 p-4 bg-emeraldsuccess hover:bg-emeraldsuccess-light text-champagne rounded-full shadow-green-glow transition-all duration-300 hover:scale-110 focus:outline-none flex items-center justify-center group" aria-label="Fale conosco no WhatsApp">
+    <!-- Ícone de Telefone / Conversa (SVG) -->
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 group-hover:rotate-12 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+    </svg>
+    <!-- Tooltip Flutuante -->
+    <span class="absolute right-16 bg-obsidian text-champagne border border-accentgold/30 text-[11px] px-3 py-1.5 font-medium tracking-wide shadow-xl whitespace-nowrap opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 pointer-events-none uppercase">
+      Atendimento WhatsApp
+    </span>
+  </a>
+
+  <!-- ==========================================
+       CART DRAWER (SACOLA DE COMPRAS LATERAL)
+       ========================================== -->
+  <!-- Background Overlay do Carrinho -->
+  <div id="cart-overlay" onclick="toggleCart(false)" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-[55] hidden transition-all duration-300"></div>
+  
+  <!-- Slider Drawer do Carrinho -->
+  <div id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-obsidian-light z-[60] border-l border-obsidian-accent shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col justify-between">
+    
+    <!-- Cabeçalho do Carrinho -->
+    <div class="p-6 border-b border-obsidian-accent flex justify-between items-center bg-obsidian">
+      <div class="flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accentgold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+        </svg>
+        <h3 class="font-serif text-lg text-champagne">Sua Sacola de Roupas</h3>
+      </div>
+      <button onclick="toggleCart(false)" class="text-champagne-muted hover:text-accentgold text-sm uppercase tracking-widest font-semibold p-2">
+        Fechar ✕
+      </button>
+    </div>
+
+    <!-- Lista de Itens (Scrollable) -->
+    <div id="cart-items-container" class="flex-1 p-6 overflow-y-auto space-y-4">
+      <!-- Exemplo de item (Injetado dinamicamente) -->
+      <div class="text-center py-12 text-champagne-muted font-light space-y-3">
+        <p>Sua sacola de roupas está vazia.</p>
+        <button onclick="toggleCart(false)" class="text-xs text-accentgold underline uppercase tracking-wider font-semibold">Explorar Coleção</button>
+      </div>
+    </div>
+
+    <!-- Resumo de Valores & Botão WhatsApp -->
+    <div class="p-6 border-t border-obsidian-accent bg-obsidian space-y-4">
+      <div class="space-y-2">
+        <div class="flex justify-between text-xs text-champagne-muted">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">R$ 0,00</span>
+        </div>
+        <div class="flex justify-between text-xs text-champagne-muted">
+          <span>Frete</span>
+          <span id="cart-shipping" class="text-accentgold">Calculando...</span>
+        </div>
+        <div class="flex justify-between text-sm font-semibold text-champagne pt-2 border-t border-obsidian-accent/30">
+          <span>Total Geral</span>
+          <span id="cart-total" class="text-accentgold text-lg">R$ 0,00</span>
+        </div>
+      </div>
+
+      <button onclick="checkoutWhatsApp()" class="w-full py-4 bg-emeraldsuccess hover:bg-emeraldsuccess-light text-champagne text-center font-semibold uppercase tracking-widest text-xs transition-all duration-300 flex items-center justify-center space-x-2 shadow-green-glow">
+        <span>Enviar Pedido via WhatsApp</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </button>
+      <p class="text-[10px] text-center text-champagne-muted font-light">Ao clicar, geraremos o resumo com o total das amostras para finalizar no atendimento exclusivo.</p>
+    </div>
+
+  </div>
+
+  <!-- ==========================================
+       QUIZ DE ESTILO MODAL (FINDER DE LOOK)
+       ========================================== -->
+  <div id="quiz-modal" class="fixed inset-0 z-[70] hidden items-center justify-center bg-black/85 backdrop-blur-md px-4">
+    <div class="w-full max-w-xl bg-obsidian border border-accentgold/30 p-8 md:p-10 shadow-glass-panel relative flex flex-col justify-between modal-active">
+      
+      <!-- Fechar Modal -->
+      <button onclick="closeQuiz()" class="absolute top-4 right-4 text-champagne-muted hover:text-accentgold p-2 text-sm">
+        ✕ Fechar
+      </button>
+
+      <!-- Barra de Progresso do Quiz -->
+      <div class="w-full bg-obsidian-light h-1 mb-8 overflow-hidden">
+        <div id="quiz-progress" class="bg-accentgold h-full w-1/3 transition-all duration-350"></div>
+      </div>
+
+      <!-- Etapas do Quiz -->
+      <div id="quiz-step-container">
+        
+        <!-- STEP 1: OCASIÃO -->
+        <div id="quiz-step-1" class="space-y-6">
+          <div class="space-y-2">
+            <span class="text-[10px] uppercase tracking-widest text-accentgold font-semibold">Passo 1 de 3</span>
+            <h3 class="font-serif text-2xl text-champagne">Qual a principal ocasião para o seu look?</h3>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <button onclick="selectQuizAnswer(1, 'dia-a-dia')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-left text-sm text-champagne hover:text-accentgold transition-all duration-200">
+              ☀️ ☀️ Trabalho formal / Reuniões
+            </button>
+            <button onclick="selectQuizAnswer(1, 'encontro')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-left text-sm text-champagne hover:text-accentgold transition-all duration-200">
+              🕯️ 🕯️ Jantares / Eventos noturnos
+            </button>
+            <button onclick="selectQuizAnswer(1, 'negocios')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-left text-sm text-champagne hover:text-accentgold transition-all duration-200">
+              💼 💼 Casual / Final de semana
+            </button>
+            <button onclick="selectQuizAnswer(1, 'balada')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-left text-sm text-champagne hover:text-accentgold transition-all duration-200">
+              🥂 🥂 Viagens / Resort casual
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 2: INTENSIDADE -->
+        <div id="quiz-step-2" class="space-y-6 hidden">
+          <div class="space-y-2">
+            <span class="text-[10px] uppercase tracking-widest text-accentgold font-semibold">Passo 2 de 3</span>
+            <h3 class="font-serif text-2xl text-champagne">Qual o seu estilo predominante?</h3>
+          </div>
+          <div class="grid grid-cols-1 gap-4">
+            <button onclick="selectQuizAnswer(2, 'suave')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-left text-sm text-champagne hover:text-accentgold transition-all duration-200 flex justify-between items-center">
+              <span>🍃 🍃 Minimalista e Atemporal (Peças básicas e estruturadas)</span>
+              <span>→</span>
+            </button>
+            <button onclick="selectQuizAnswer(2, 'moderado')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-left text-sm text-champagne hover:text-accentgold transition-all duration-200 flex justify-between items-center">
+              <span>✨ ✨ Elegante e Clássico (Alfaiataria fina e cores sóbrias)</span>
+              <span>→</span>
+            </button>
+            <button onclick="selectQuizAnswer(2, 'intenso')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-left text-sm text-champagne hover:text-accentgold transition-all duration-200 flex justify-between items-center">
+              <span>🔥 🔥 Moderno e Ousado (Modelagens oversized e caimento fluido)</span>
+              <span>→</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 3: PREFERÊNCIA DE TECIDO -->
+        <div id="quiz-step-3" class="space-y-6 hidden">
+          <div class="space-y-2">
+            <span class="text-[10px] uppercase tracking-widest text-accentgold font-semibold">Passo 3 de 3</span>
+            <h3 class="font-serif text-2xl text-champagne">Qual tecido ou caimento você prefere?</h3>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <button onclick="selectQuizAnswer(3, 'blazer')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-center text-sm text-champagne hover:text-accentgold transition-all duration-200 flex flex-col justify-center items-center h-28 space-y-2">
+              <span class="text-2xl">👔</span>
+              <span class="font-semibold uppercase tracking-wider text-[10px]">Linho Italiano</span>
+            </button>
+            <button onclick="selectQuizAnswer(3, 'camisa')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-center text-sm text-champagne hover:text-accentgold transition-all duration-200 flex flex-col justify-center items-center h-28 space-y-2">
+              <span class="text-2xl">🧣</span>
+              <span class="font-semibold uppercase tracking-wider text-[10px]">Seda Natural</span>
+            </button>
+            <button onclick="selectQuizAnswer(3, 'calca')" class="p-4 border border-obsidian-accent hover:border-accentgold bg-obsidian-light text-center text-sm text-champagne hover:text-accentgold transition-all duration-200 flex flex-col justify-center items-center h-28 space-y-2">
+              <span class="text-2xl">👖</span>
+              <span class="font-semibold uppercase tracking-wider text-[10px]">Alfaiataria Fina</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4: RESULTADO -->
+        <div id="quiz-result" class="space-y-6 hidden">
+          <div class="text-center space-y-2">
+            <span class="text-[10px] uppercase tracking-widest text-accentgold font-semibold">Resultado do Seu Perfil</span>
+            <h3 class="font-serif text-2xl text-champagne">Seu Estilo Ideal Encontrado!</h3>
+          </div>
+          
+          <div class="bg-obsidian-light border border-accentgold/20 p-6 flex flex-col sm:flex-row items-center gap-6">
+            <div class="w-24 h-24 bg-obsidian-accent border border-obsidian-accent flex items-center justify-center text-center p-2 rounded-none relative overflow-hidden">
+              <span id="quiz-result-img" class="text-[9px] text-accentgold font-mono break-all">[IMAGEM]</span>
+            </div>
+            <div class="space-y-2 text-center sm:text-left flex-1">
+              <h4 id="quiz-result-title" class="font-serif text-xl text-accentgold">Rouge N° 540</h4>
+              <p id="quiz-result-desc" class="text-xs text-champagne-muted font-light leading-relaxed">
+                Uma peça de extrema elegância e caimento fluido, ideal para ocasiões de destaque.
+              </p>
+              <div class="flex items-center space-x-2 pt-1 justify-center sm:justify-start">
+                <span class="text-[10px] text-champagne bg-accentgold/15 px-2 py-0.5 uppercase font-semibold border border-accentgold/20" id="quiz-result-family">Floral Âmbar</span>
+                <span class="text-xs font-bold text-champagne" id="quiz-result-price">R$ 189,90</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-3 pt-2">
+            <button id="quiz-add-btn" class="flex-1 py-4 bg-accentgold hover:bg-accentgold-light text-obsidian font-semibold uppercase tracking-widest text-xs transition-all duration-300 text-center">
+              Adicionar à Sacola
+            </button>
+            <button id="quiz-wa-btn" class="flex-1 py-4 bg-emeraldsuccess hover:bg-emeraldsuccess-light text-champagne font-semibold uppercase tracking-widest text-xs transition-all duration-300 text-center flex items-center justify-center space-x-2">
+              <span>Pedir no WhatsApp</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+            </button>
+          </div>
+          <div class="text-center pt-2">
+            <button onclick="resetQuiz()" class="text-xs text-accentgold underline uppercase tracking-wider font-semibold">Refazer Quiz</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       POPUP DE CAPTURA / DESCONTO (EXIT-INTENT / TIME)
+       ========================================== -->
+  <div id="discount-modal" class="fixed inset-0 z-[65] hidden items-center justify-center bg-black/85 backdrop-blur-sm px-4">
+    <div class="w-full max-w-md bg-obsidian border border-accentgold/40 p-8 md:p-10 shadow-glass-panel relative flex flex-col items-center text-center modal-active">
+      
+      <button onclick="closeDiscountModal()" class="absolute top-4 right-4 text-champagne-muted hover:text-accentgold text-sm p-2">
+        ✕ Fechar
+      </button>
+
+      <!-- Badge Decorativo -->
+      <span class="text-[10px] uppercase tracking-widest text-accentgold font-bold border border-accentgold/30 px-3 py-1 bg-accentgold/5 mb-6">Presente de Boas-Vindas</span>
+      
+      <h3 class="font-serif text-3xl font-normal text-champagne mb-3">Espere! Garanta 10% OFF</h3>
+      
+      <p class="text-xs text-champagne-muted font-light leading-relaxed mb-6 max-w-[280px]">
+        Garanta um desconto exclusivo de **10% OFF** no seu primeiro pedido de moda autoral com o cupom abaixo:
+      </p>
+
+      <!-- Código do Cupom com Destaque -->
+      <div class="w-full py-4 bg-obsidian-light border border-dashed border-accentgold/40 font-mono text-lg font-bold text-accentgold tracking-widest select-all mb-6">
+        ATELIER10
+      </div>
+
+      <button onclick="applyDiscountCoupon()" class="w-full py-4 bg-accentgold hover:bg-accentgold-light text-obsidian font-semibold uppercase tracking-widest text-xs transition-all duration-300 mb-4 shadow-gold-glow">
+        Copiar Cupom & Ver Coleção
+      </button>
+
+      <p class="text-[10px] text-champagne-muted">Aproveite! Válido apenas para compras realizadas nas próximas 24 horas.</p>
+
+    </div>
+  </div>
+
+  <!-- ==========================================
+       VANILLA JAVASCRIPT & ESTADOS
+       ========================================== -->
+  <script>
+    // -------------------------------------------------------------
+    // ESTADOS GLOBAIS DA APLICAÇÃO
+    // -------------------------------------------------------------
+    let cart = [];
+    let currentQuizStep = 1;
+    let quizAnswers = {};
+    let currentTestimonialIndex = 0;
+    const totalTestimonials = 3;
+
+    // Catálogo de Peças do Quiz
+    const productsCatalog = {
+      'blazer': { id: 1, name: 'Blazer Oversized Linho', price: 289.9, img: 'images/fashion_p1.png', family: 'Linho Premium', desc: 'Blazer oversized em linho premium italiano, corte reto descontraído com forro acetinado. Peça versátil para looks formais e casuais.' },
+      'camisa': { id: 2, name: 'Camisa Seda Natural', price: 199.9, img: 'images/fashion_p2.png', family: 'Seda Natural', desc: 'Camisa em seda natural com caimento fluido perfeito, colarinho italiano e botões de madrepérola. Elegância atemporal.' },
+      'calca': { id: 3, name: 'Calça Alfaiataria Wide', price: 249.9, img: 'images/fashion_p3.png', family: 'Alfaiataria', desc: 'Calça wide leg em tecido de alfaiataria com elastano, cintura alta estruturada e vincos marcados. Conforto premium.' }
+    };
+
+    // -------------------------------------------------------------
+    // 1. HEADER & MENUS
+    // -------------------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      const header = document.getElementById('main-header');
+      const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const menuIcon = document.getElementById('menu-icon');
+
+      // Efeito do Header no Scroll
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+          header.classList.add('bg-obsidian/90', 'backdrop-blur-md', 'border-obsidian-accent');
+          header.classList.remove('border-transparent');
+          // Diminui o deslocamento da barra de promoção ao rolar
+          header.style.top = '0px';
+        } else {
+          header.classList.remove('bg-obsidian/90', 'backdrop-blur-md', 'border-obsidian-accent');
+          header.classList.add('border-transparent');
+          header.style.top = '40px';
+        }
+      });
+
+      // Comportamento do Menu Mobile
+      mobileMenuBtn.addEventListener('click', () => {
+        const isClosed = mobileMenu.classList.contains('hidden');
+        if (isClosed) {
+          mobileMenu.classList.remove('hidden');
+          menuIcon.setAttribute('d', 'M6 18L18 6M6 6l12 12');
+        } else {
+          mobileMenu.classList.add('hidden');
+          menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        }
+      });
+
+      // Fechar menu mobile ao clicar em um link âncora
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          menuIcon.setAttribute('d', 'M4 6h16M4 12h16M4 18h16');
+        });
+      });
+
+      // -------------------------------------------------------------
+      // 2. CRONÔMETRO REGRESSIVO (15 minutos reincidentes)
+      // -------------------------------------------------------------
+      const countdownElement = document.getElementById('countdown');
+      let timeLimit = 15 * 60; // 15 minutos em segundos
+
+      const updateCountdown = () => {
+        let minutes = Math.floor(timeLimit / 60);
+        let seconds = timeLimit % 60;
+        countdownElement.innerText = 
+          `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        
+        if (timeLimit <= 0) {
+          timeLimit = 15 * 60; // Reseta a contagem
+        } else {
+          timeLimit--;
+        }
+      };
+      
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // -------------------------------------------------------------
+      // 3. SIMULADOR DE ECONOMIA
+      // -------------------------------------------------------------
+      const slider = document.getElementById('item-slider');
+      const sliderVal = document.getElementById('slider-val');
+      const costBottles = document.getElementById('cost-bottles');
+      const costSamples = document.getElementById('cost-samples');
+      const costSaved = document.getElementById('cost-saved');
+
+      const updateCalculations = () => {
+        const qty = parseInt(slider.value);
+        sliderVal.innerText = qty;
+
+        const valBottles = qty * 800;
+        const valSamples = qty * 249.9;
+        const valSaved = valBottles - valSamples;
+
+        costBottles.innerText = `R$ ${valBottles.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+        costSamples.innerText = `R$ ${valSamples.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+        costSaved.innerText = `R$ ${valSaved.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      };
+
+      slider.addEventListener('input', updateCalculations);
+      updateCalculations();
+
+      // -------------------------------------------------------------
+      // 4. SISTEMA DE CAPTURA / DESCONTO (Exit Intent & Delay)
+      // -------------------------------------------------------------
+      // Exibição após 8 segundos
+      setTimeout(() => {
+        if (!localStorage.getItem('discount_modal_shown')) {
+          showDiscountModal();
+        }
+      }, 8000);
+
+      // Gatilho de Intenção de Saída (Exit Intent)
+      document.addEventListener('mouseleave', (e) => {
+        if (e.clientY < 20) { // Cursor saiu pela borda superior
+          if (!localStorage.getItem('discount_modal_shown')) {
+            showDiscountModal();
+          }
+        }
+      });
+
+    });
+
+    const showDiscountModal = () => {
+      document.getElementById('discount-modal').classList.remove('hidden');
+      document.getElementById('discount-modal').classList.add('flex');
+    };
+
+    const closeDiscountModal = () => {
+      document.getElementById('discount-modal').classList.add('hidden');
+      document.getElementById('discount-modal').classList.remove('flex');
+      localStorage.setItem('discount_modal_shown', 'true');
+    };
+
+    const applyDiscountCoupon = () => {
+      // Copiar código do cupom para área de transferência
+      navigator.clipboard.writeText('ATELIER10').then(() => {
+        alert('Cupom ATELIER10 copiado com sucesso! 10% de desconto ativado.');
+        closeDiscountModal();
+      });
+    };
+
+    // -------------------------------------------------------------
+    // 5. SUBMISSÃO DO FORMULÁRIO DE CONTATO (WHATSAPP)
+    // -------------------------------------------------------------
+    const submitContactForm = (event) => {
+      event.preventDefault();
+      const name = document.getElementById('contact-name').value;
+      const email = document.getElementById('contact-email').value;
+      const message = document.getElementById('contact-message').value;
+
+      let text = `Olá! Gostaria de entrar em contato através do formulário do site:\n\n`;
+      text += `Nome: ${name}\n`;
+      text += `E-mail: ${email}\n\n`;
+      text += `Mensagem: ${message}`;
+
+      const encodedText = encodeURIComponent(text);
+      const url = `https://wa.me/5516997795333?text=${encodedText}`;
+
+      window.open(url, '_blank', 'noopener,noreferrer');
+    };
+
+    // -------------------------------------------------------------
+    // 6. CARRINHO DE COMPRAS (SACOLA LATERAL)
+    // -------------------------------------------------------------
+    const toggleCart = (open) => {
+      const cartDrawer = document.getElementById('cart-drawer');
+      const cartOverlay = document.getElementById('cart-overlay');
+      
+      if (open) {
+        cartDrawer.classList.remove('translate-x-full');
+        cartOverlay.classList.remove('hidden');
+        renderCart();
+      } else {
+        cartDrawer.classList.add('translate-x-full');
+        cartOverlay.classList.add('hidden');
+      }
+    };
+
+    const addToCart = (id, name, price, img) => {
+      const existingProduct = cart.find(item => item.id === id);
+      
+      if (existingProduct) {
+        existingProduct.quantity += 1;
+      } else {
+        cart.push({ id, name, price, img, quantity: 1 });
+      }
+      
+      updateCartCount();
+      toggleCart(true);
+    };
+
+    const changeQuantity = (id, change) => {
+      const product = cart.find(item => item.id === id);
+      if (product) {
+        product.quantity += change;
+        if (product.quantity <= 0) {
+          cart = cart.filter(item => item.id !== id);
+        }
+      }
+      updateCartCount();
+      renderCart();
+    };
+
+    const updateCartCount = () => {
+      const badge = document.getElementById('cart-badge');
+      const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+      
+      if (totalItems > 0) {
+        badge.innerText = totalItems;
+        badge.classList.remove('hidden');
+      } else {
+        badge.classList.add('hidden');
+      }
+    };
+
+    const renderCart = () => {
+      const container = document.getElementById('cart-items-container');
+      const subtotalElement = document.getElementById('cart-subtotal');
+      const shippingElement = document.getElementById('cart-shipping');
+      const totalElement = document.getElementById('cart-total');
+      
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 text-champagne-muted font-light space-y-3">
+            <p>Sua sacola de roupas está vazia.</p>
+            <button onclick="toggleCart(false)" class="text-xs text-accentgold underline uppercase tracking-wider font-semibold">Explorar Coleção</button>
+          </div>
+        `;
+        subtotalElement.innerText = 'R$ 0,00';
+        shippingElement.innerText = 'Calculando...';
+        totalElement.innerText = 'R$ 0,00';
+        return;
+      }
+
+      let subtotal = 0;
+      container.innerHTML = '';
+      
+      cart.forEach(item => {
+        subtotal += item.price * item.quantity;
+        
+        container.innerHTML += `
+          <div class="flex items-center space-x-4 border-b border-obsidian-accent/30 pb-4">
+            <!-- Imagem da Roupa/placeholder -->
+            <div class="w-16 h-20 bg-obsidian flex items-center justify-center border border-obsidian-accent shrink-0 relative overflow-hidden">
+              <span class="text-2xl">${item.id === 1 ? '👔' : item.id === 2 ? '🧣' : '👖'}</span>
+            </div>
+            
+            <!-- Descrição e ações -->
+            <div class="flex-1 space-y-1">
+              <div class="flex justify-between items-start">
+                <h4 class="font-serif text-sm text-champagne">${item.name}</h4>
+                <button onclick="changeQuantity(${item.id}, -${item.quantity})" class="text-[10px] text-red-400 hover:text-red-500 uppercase font-semibold">remover</button>
+              </div>
+              <p class="text-xs text-accentgold font-medium">Tamanho Único</p>
+              
+              <!-- Seletor de quantidade -->
+              <div class="flex justify-between items-center pt-1.5">
+                <div class="flex items-center space-x-2 border border-obsidian-accent bg-obsidian px-2 py-0.5">
+                  <button onclick="changeQuantity(${item.id}, -1)" class="text-champagne-muted hover:text-champagne font-bold text-sm">-</button>
+                  <span class="text-xs text-champagne font-semibold font-mono w-4 text-center">${item.quantity}</span>
+                  <button onclick="changeQuantity(${item.id}, 1)" class="text-champagne-muted hover:text-champagne font-bold text-sm">+</button>
+                </div>
+                <span class="text-xs font-semibold text-champagne">R$ ${(item.price * item.quantity).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      // Cálculo de frete grátis
+      const shipping = subtotal >= 199 ? 0 : 15.00;
+      const total = subtotal + shipping;
+
+      subtotalElement.innerText = `R$ ${subtotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      shippingElement.innerText = shipping === 0 ? 'GRÁTIS' : `R$ ${shipping.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      if (shipping === 0) {
+        shippingElement.classList.add('text-accentgold');
+      } else {
+        shippingElement.classList.remove('text-accentgold');
+      }
+      totalElement.innerText = `R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+    };
+
+    const checkoutWhatsApp = () => {
+      if (cart.length === 0) {
+        alert('Adicione pelo menos uma peça ao carrinho!');
+        return;
+      }
+      
+      let text = 'Olá! Gostaria de fazer o pedido das seguintes roupas do ATELIER:\n\n';
+      let subtotal = 0;
+      
+      cart.forEach(item => {
+        text += `- ${item.quantity}x ${item.name} (10ml) — R$ ${(item.price * item.quantity).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}\n`;
+        subtotal += item.price * item.quantity;
+      });
+
+      const shipping = subtotal >= 199 ? 0 : 15.00;
+      const total = subtotal + shipping;
+
+      text += `\nSubtotal: R$ ${subtotal.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      text += `\nFrete: ${shipping === 0 ? 'GRÁTIS' : `R$ ${shipping.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`}`;
+      text += `\nTotal do Pedido: R$ ${total.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}🎉`;
+
+      const encodedText = encodeURIComponent(text);
+      const url = `https://wa.me/5516997795333?text=${encodedText}`;
+      
+      window.open(url, '_blank', 'noopener,noreferrer');
+    };
+
+    // -------------------------------------------------------------
+    // 7. QUIZ / FINDER DE LOOK IDEAL
+    // -------------------------------------------------------------
+    const openQuiz = () => {
+      document.getElementById('quiz-modal').classList.remove('hidden');
+      document.getElementById('quiz-modal').classList.add('flex');
+      resetQuiz();
+    };
+
+    const closeQuiz = () => {
+      document.getElementById('quiz-modal').classList.add('hidden');
+      document.getElementById('quiz-modal').classList.remove('flex');
+    };
+
+    const resetQuiz = () => {
+      currentQuizStep = 1;
+      quizAnswers = {};
+      document.getElementById('quiz-progress').style.width = '33%';
+      
+      document.getElementById('quiz-step-1').classList.remove('hidden');
+      document.getElementById('quiz-step-2').classList.add('hidden');
+      document.getElementById('quiz-step-3').classList.add('hidden');
+      document.getElementById('quiz-result').classList.add('hidden');
+    };
+
+    const selectQuizAnswer = (step, value) => {
+      quizAnswers[`step${step}`] = value;
+      
+      if (step === 1) {
+        currentQuizStep = 2;
+        document.getElementById('quiz-progress').style.width = '66%';
+        document.getElementById('quiz-step-1').classList.add('hidden');
+        document.getElementById('quiz-step-2').classList.remove('hidden');
+      } else if (step === 2) {
+        currentQuizStep = 3;
+        document.getElementById('quiz-progress').style.width = '100%';
+        document.getElementById('quiz-step-2').classList.add('hidden');
+        document.getElementById('quiz-step-3').classList.remove('hidden');
+      } else if (step === 3) {
+        showQuizResult();
+      }
+    };
+
+    const showQuizResult = () => {
+      document.getElementById('quiz-step-3').classList.add('hidden');
+      document.getElementById('quiz-result').classList.remove('hidden');
+      
+      // Logica de Recomendacao de Look
+      let recKey = 'blazer'; // Padrão
+      
+      const occasion = quizAnswers.step1;
+      const intensity = quizAnswers.step2;
+      const aroma = quizAnswers.step3;
+
+      if (aroma === 'calca' || occasion === 'negocios') {
+        recKey = 'calca';
+      } else if (aroma === 'camisa' || intensity === 'moderado') {
+        recKey = 'camisa';
+      } else {
+        recKey = 'blazer';
+      }
+
+      const recommendation = productsCatalog[recKey];
+      
+      document.getElementById('quiz-result-title').innerText = recommendation.name;
+      document.getElementById('quiz-result-desc').innerText = recommendation.desc;
+      document.getElementById('quiz-result-family').innerText = recommendation.family;
+      document.getElementById('quiz-result-price').innerText = `R$ ${recommendation.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`;
+      document.getElementById('quiz-result-img').innerText = recommendation.img;
+
+      // Botão Adicionar do Resultado
+      const addBtn = document.getElementById('quiz-add-btn');
+      addBtn.onclick = () => {
+        addToCart(recommendation.id, recommendation.name, recommendation.price, recommendation.img);
+        closeQuiz();
+      };
+
+      // Botão WhatsApp do Resultado
+      const waBtn = document.getElementById('quiz-wa-btn');
+      waBtn.onclick = () => {
+        let text = `Olá! Realizei o Quiz de Estilo no site e meu resultado foi:\n\n`;
+        text += `Peça Recomendada: ${recommendation.name} (${recommendation.family})\n`;
+        text += `Minhas escolhas:\n`;
+        text += `- Ocasião: ${quizAnswers.step1}\n`;
+        text += `- Intensidade: ${quizAnswers.step2}\n`;
+        text += `- Preferência: ${quizAnswers.step3}\n\n`;
+        text += `Gostaria de encomendar esta peça por R$ ${recommendation.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}!`;
+
+        const encodedText = encodeURIComponent(text);
+        const url = `https://wa.me/5516997795333?text=${encodedText}`;
+        window.open(url, '_blank', 'noopener,noreferrer');
+        closeQuiz();
+      };
+    };
+
+    // -------------------------------------------------------------
+    // 8. GUIA DE ESTILO INTERATIVO
+    // -------------------------------------------------------------
+    const selectPyramidLayer = (layerName) => {
+      const layers = ['topo', 'coracao', 'fundo'];
+      
+      layers.forEach(layer => {
+        const element = document.getElementById(`layer-${layer}`);
+        const desc = document.getElementById(`desc-${layer}`);
+        const leftIndicator = element.querySelector('.absolute');
+        const arrow = element.querySelector('svg');
+        
+        if (layer === layerName) {
+          desc.classList.remove('hidden');
+          leftIndicator.classList.remove('bg-transparent');
+          leftIndicator.classList.add('bg-accentgold');
+          arrow.classList.add('rotate-180');
+        } else {
+          desc.classList.add('hidden');
+          leftIndicator.classList.remove('bg-accentgold');
+          leftIndicator.classList.add('bg-transparent');
+          arrow.classList.remove('rotate-180');
+        }
+      });
+    };
+
+    // -------------------------------------------------------------
+    // 9. CARROSSEL DE DEPOIMENTOS (SLIDER)
+    // -------------------------------------------------------------
+    const showSlide = (index) => {
+      // Oculta todos os slides
+      for (let i = 0; i < totalTestimonials; i++) {
+        const slide = document.getElementById(`slide-${i}`);
+        const bullet = document.getElementById(`bullet-${i}`);
+        
+        if (i === index) {
+          slide.classList.remove('hidden', 'opacity-0');
+          slide.classList.add('block', 'opacity-100');
+          bullet.classList.remove('bg-accentgold/30');
+          bullet.classList.add('bg-accentgold');
+        } else {
+          slide.classList.add('hidden', 'opacity-0');
+          slide.classList.remove('block', 'opacity-100');
+          bullet.classList.add('bg-accentgold/30');
+          bullet.classList.remove('bg-accentgold');
+        }
+      }
+      currentTestimonialIndex = index;
+    };
+
+    const nextSlide = () => {
+      let index = currentTestimonialIndex + 1;
+      if (index >= totalTestimonials) {
+        index = 0;
+      }
+      showSlide(index);
+    };
+
+    const prevSlide = () => {
+      let index = currentTestimonialIndex - 1;
+      if (index < 0) {
+        index = totalTestimonials - 1;
+      }
+      showSlide(index);
+    };
+
+  </script>
+
+</body>
+</html>
